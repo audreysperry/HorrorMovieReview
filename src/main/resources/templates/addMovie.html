@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{'/webjars/bootstrap/4.0.0-alpha/css/bootstrap.css'}"/>
+    <link rel="stylesheet" href="/assets/css/app.css"/>
+
+</head>
+<body>
+<nav class="nav">
+    <a class="nav-link active" href="#">Home</a>
+    <a class="nav-link" href="/movie/add">Add Movie</a>
+    <a class="nav-link" href="#">Link</a>
+
+</nav>
+<div>
+    <h1>Add Movie</h1>
+    <form action="/movie/add" method="post" th:object="${movie}">
+        <input type="text" th:field="*{title}" placeholder="Movie Title"/>
+        <input type="text" th:field="*{genre}" placeholder="Scary Level" />
+        <input type="text" th:field="*{releasedate}" placeholder="Release Date" />
+        <input type="text" th:field="*{imdblink}" placeholder="IMDB Url" />
+        <input type="text" th:field="*{imagelink}" placeholder="Movie Image Url" />
+        <input type="submit" value="Add Movie" />
+    </form>
+
+</div>
+
+</body>
+</html>
