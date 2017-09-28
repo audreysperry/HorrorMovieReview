@@ -15,6 +15,8 @@ public class Review {
     private String reviewername;
     private int rating;
 
+    private String reviewtyped;
+
     @Column(name="reviewer_age")
     private int reviewerAge;
 
@@ -28,6 +30,13 @@ public class Review {
     @JoinColumn(name="movie_id")
     private Movie movie;
 
+    public String getReviewtyped() {
+        return reviewtyped;
+    }
+
+    public void setReviewtyped(String reviewtyped) {
+        this.reviewtyped = reviewtyped;
+    }
 
     public long getId() {
         return id;

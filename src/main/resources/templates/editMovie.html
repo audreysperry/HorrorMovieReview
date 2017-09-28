@@ -3,8 +3,16 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{'/webjars/bootstrap/4.0.0-beta/css/bootstrap.css'}"/>
+    <link rel="stylesheet" href="/assets/css/app.css"/>
 </head>
 <body>
+<nav class="nav">
+    <a class="nav-link active" href="#">Home</a>
+    <a class="nav-link" href="/movie/add">Add Movie</a>
+    <a class="nav-link" href="#">Link</a>
+
+</nav>
     <div>
         <h1>Edit Movie Details</h1>
         <form action="" method="post" th:object="${movie}">

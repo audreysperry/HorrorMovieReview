@@ -1,19 +1,27 @@
 package com.audreysperry.moviereview.controllers;
 
 import com.audreysperry.moviereview.models.Movie;
+import com.audreysperry.moviereview.models.Review;
 import com.audreysperry.moviereview.repositories.MoviesRepository;
+import com.audreysperry.moviereview.repositories.ReviewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.List;
 
 @Controller
 public class MovieController {
 
     @Autowired
     private MoviesRepository movieRepo;
+
+    @Autowired
+    private ReviewsRepository reviewRepo;
 
     @RequestMapping("/")
     public String displayMovies(Model model) {
@@ -57,6 +65,36 @@ public class MovieController {
     public String editMovie(@ModelAttribute Movie movie,
                             @ModelAttribute ("id") long id) {
         movieRepo.save(movie);
+        return "redirect:/";
+    }
+
+    @RequestMapping(value="/movie/{movieid}/viewReviews")
+    public String viewReviews(@PathVariable ("movieid") Long movieid,
+                                Model model) {
+        Movie movie = movieRepo.findOne(movieid);
+        List reviews = movie.getReviews();
+        System.out.println(reviews);
+        model.addAttribute("reviews", reviews);
+        return "viewReviews";
+    }
+
+    @RequestMapping(value="/movie/{movieid}/review")
+    public String writeReview(@PathVariable ("movieid") long movieid,
+                              Model model) {
+        model.addAttribute(movieRepo.findOne(movieid));
+        model.addAttribute("review", new Review());
+        return "reviewForm";
+    }
+
+    @RequestMapping(value="/movie/{movieid}/review", method = RequestMethod.POST)
+    public String submitReview(@PathVariable ("movieid") Long movieid,
+                               Model model,
+                               @ModelAttribute Review review) {
+        Movie movie = movieRepo.findOne(movieid);
+        Review newReview = review;
+        newReview.setMovie(movie);
+        reviewRepo.save(newReview);
+
         return "redirect:/";
     }
 }

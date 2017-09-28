@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{'/webjars/bootstrap/4.0.0-beta/css/bootstrap.css'}"/>
+    <link rel="stylesheet" href="/assets/css/app.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="movie-review-name">
+            <span>Review </span>
+            <span th:text="${movie.title}"></span>
+        </div>
+        <br/>
+        <div class="row">
+            <form class="col-md-6" th:action="@{'/movie/' + ${movie.id} + '/review'}" method="post" th:object="${review}">
+                <div class="form-group">
+                    <label>Your Name (optional)</label>
+                    <input class="form-control" type="text" th:field="*{reviewername}" placeholder="Name" />
+                </div>
+                <div class="form-group">
+                    <label>Your Age (optional)</label>
+                    <input class="form-control" type="text" th:field="*{reviewerAge}" />
+                </div>
+                <div class="form-group">
+                    <label>Your Gender (optional)</label>
+                    <input class="form-control" type="text" th:field="*{reviewerGender}" placeholder="Gender (optional)" />
+                </div>
+                <div class="form-group">
+                    <label>Your Occupation (optional)</label>
+                    <input class="form-control" type="text" th:field="*{reviewerOccupation}" placeholder="Occupation (optional)" />
+                </div>
+                <div class="form-group">
+                    <label>Rate the movie on a scale of 1 to 5</label>
+                    <input class="form-control" type="text" th:field="*{rating}" />
+                </div>
+                <div class="form-group">
+                    <label>Write a brief review of the movie</label>
+                    <input class="form-control" type="text" th:field="*{reviewtyped}" placeholder="Write a review" />
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">Submit Review</button>
+            </form>
+
+        </div>
+
+    </div>
+</body>
+</html>

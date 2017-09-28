@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{'/webjars/bootstrap/4.0.0-beta/css/bootstrap.css'}"/>
+    <link rel="stylesheet" href="/assets/css/app.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" th:each="review : ${reviews}">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Movie Review</h4>
+                    <p class="card-text" th:text="${review.reviewtyped}"></p>
+                    <br/>
+                    <span th:text="${review.rating}"></span><span>/5</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

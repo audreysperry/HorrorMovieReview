@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
-    <link rel="stylesheet" th:href="@{'/webjars/bootstrap/4.0.0-alpha/css/bootstrap.css'}"/>
+    <link rel="stylesheet" th:href="@{'/webjars/bootstrap/4.0.0-beta/css/bootstrap.css'}"/>
     <link rel="stylesheet" href="/assets/css/app.css"/>
 </head>
 <body>
+<nav class="nav">
+    <a class="nav-link active" href="#">Home</a>
+    <a class="nav-link" href="/movie/add">Add Movie</a>
+    <a class="nav-link" href="#">Link</a>
+
+</nav>
 <h1>Movie Detail</h1>
 
 <p th:text="${movie.title}"></p>
@@ -15,5 +21,7 @@
 <img class="movie-image" th:src="${movie.imagelink}"/>
 <a th:href="${movie.imdblink}" target="_blank">View movie on IMDB</a>
 <a th:href="@{'/movie/' + ${movie.id} + '/edit'}">Edit Movie Details</a>
+<a th:href="@{'/movie/' + ${movie.id} + '/viewReviews'}">View Reviews</a>
+<a th:href="@{'/movie/' + ${movie.id} + '/review'}">Write a Review</a>
 </body>
 </html>
