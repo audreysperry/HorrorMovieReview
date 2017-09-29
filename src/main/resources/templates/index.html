@@ -7,24 +7,29 @@
     <link rel="stylesheet" href="/assets/css/app.css"/>
 </head>
 <body>
-<nav class="nav">
-    <a class="nav-link active" href="#">Home</a>
+<nav class="nav nav-style justify-content-end">
+    <a class="nav-link active" href="/">Home</a>
     <a class="nav-link" href="/movie/add">Add Movie</a>
-    <a class="nav-link" href="#">Link</a>
 
 </nav>
 <div class="wrapper">
-    <div class="d-flex">
-        <div th:each="movies: ${movies}" class="d-flex flex-column movies">
-            <a th:href="@{'/movie/' + ${movies.id}}"><p th:text="${movies.title}"></p></a>
-            <p th:text="${movies.genre}"></p>
-            <p th:text="${movies.releasedate}"></p>
-            <img class="movie-image" th:src="${movies.imagelink}"/>
-            <a th:href="${movies.imdblink}" target="_blank">View movie on IMDB</a>
-        </div>
-    </div>
 
+    <div class="row">
+        <div class="col-md-4" th:each="movies: ${movies}">
+            <div  class="card text-center card-inverse" style="background-color: #eee; border-color: #333;">
+                <div class="card-block card-det">
+                    <h4 class="card-title" th:text="${movies.title}"></h4>
+                    <h6 class="card-subtitle mb-2 text-muted" th:text="${movies.releasedate}">Card subtitle</h6>
+                    <img class="movie-image card-img" th:src="${movies.imagelink}"/>
+                    <br/>
+                    <a th:href="@{'/movie/' + ${movies.id}}" class="card-link">View movie details</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
+
 
 
 <script type="application/javascript"
@@ -33,3 +38,5 @@
         th:src="${'/webjars/bootstrap/4.0.0-beta/js/bootstrap.js'}"></script>
 </body>
 </html>
+
+

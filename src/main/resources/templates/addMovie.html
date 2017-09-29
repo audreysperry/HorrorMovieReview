@@ -8,21 +8,36 @@
 
 </head>
 <body>
-<nav class="nav">
-    <a class="nav-link active" href="#">Home</a>
+<nav class="nav justify-content-end nav-style">
+    <a class="nav-link active" href="/">Home</a>
     <a class="nav-link" href="/movie/add">Add Movie</a>
-    <a class="nav-link" href="#">Link</a>
 
 </nav>
-<div>
-    <h1>Add Movie</h1>
-    <form action="/movie/add" method="post" th:object="${movie}">
-        <input type="text" th:field="*{title}" placeholder="Movie Title"/>
-        <input type="text" th:field="*{genre}" placeholder="Scary Level" />
-        <input type="text" th:field="*{releasedate}" placeholder="Release Date" />
-        <input type="text" th:field="*{imdblink}" placeholder="IMDB Url" />
-        <input type="text" th:field="*{imagelink}" placeholder="Movie Image Url" />
-        <input type="submit" value="Add Movie" />
+<div class="wrapper">
+    <h3>Add Movie</h3>
+    <form class="col-md-6" action="/movie/add" method="post" th:object="${movie}">
+        <div class="form-group">
+            <input class="form-control" type="text" th:field="*{title}" placeholder="Movie Title"/>
+
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" th:field="*{genre}" placeholder="Scary Level" />
+
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" th:field="*{releasedate}" placeholder="Release Date" />
+
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" th:field="*{imdblink}" placeholder="IMDB Url" />
+
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" th:field="*{imagelink}" placeholder="Movie Image Url" />
+
+        </div>
+            <input class="btn btn-primary btn-sm" type="submit" value="Add Movie" />
+
     </form>
 
 </div>

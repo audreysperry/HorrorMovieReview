@@ -7,21 +7,29 @@
     <link rel="stylesheet" href="/assets/css/app.css"/>
 </head>
 <body>
-<nav class="nav">
-    <a class="nav-link active" href="#">Home</a>
+<nav class="nav justify-content-end nav-style">
+    <a class="nav-link active" href="/">Home</a>
     <a class="nav-link" href="/movie/add">Add Movie</a>
-    <a class="nav-link" href="#">Link</a>
 
 </nav>
-<h1>Movie Detail</h1>
+<h3 class="text-center">Movie Details</h3>
 
-<p th:text="${movie.title}"></p>
-<p th:text="${movie.genre}"></p>
-<p th:text="${movie.releasedate}"></p>
-<img class="movie-image" th:src="${movie.imagelink}"/>
-<a th:href="${movie.imdblink}" target="_blank">View movie on IMDB</a>
-<a th:href="@{'/movie/' + ${movie.id} + '/edit'}">Edit Movie Details</a>
-<a th:href="@{'/movie/' + ${movie.id} + '/viewReviews'}">View Reviews</a>
-<a th:href="@{'/movie/' + ${movie.id} + '/review'}">Write a Review</a>
+
+<div  class="card text-center card-inverse col-md-6 mx-auto" style="background-color: #eee; border-color: #333;">
+    <div class="card-block card-det">
+        <h4 class="card-title" th:text="${movie.title}"></h4>
+        <h6 class="card-subtitle mb-2 text-muted" th:text="${movie.releasedate}">Card subtitle</h6>
+        <img class="movie-image card-img" th:src="${movie.imagelink}"/>
+        <br/>
+        <a th:href="${movie.imdblink}" target="_blank">View movie on IMDB</a>
+        <br/>
+        <a th:href="@{'/movie/' + ${movie.id} + '/edit'}">Edit Movie Details</a>
+        <br/>
+        <a th:href="@{'/movie/' + ${movie.id} + '/viewReviews'}">View Reviews</a>
+        <br/>
+        <a th:href="@{'/movie/' + ${movie.id} + '/review'}">Write a Review</a>
+    </div>
+</div>
+
 </body>
 </html>

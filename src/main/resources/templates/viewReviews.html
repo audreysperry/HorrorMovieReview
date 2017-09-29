@@ -7,15 +7,42 @@
     <link rel="stylesheet" href="/assets/css/app.css"/>
 </head>
 <body>
+<nav class="nav justify-content-end nav-style">
+    <a class="nav-link active" href="/">Home</a>
+    <a class="nav-link" href="/movie/add">Add Movie</a>
+
+</nav>
+
+<div class="text-center h3">
+    <span>Reviews for </span>
+    <span th:text="${movie.title}"></span>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-4" th:each="review : ${reviews}">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Movie Review</h4>
-                    <p class="card-text" th:text="${review.reviewtyped}"></p>
+                    <div class="card-title">
+                        <span th:text="${review.rating}"></span><span>/5</span>
+                    </div>
+                    <span>"</span>
+                    <span class="card-text card-text-style" th:text="${review.reviewtyped}"></span>
+                    <span>"</span>
                     <br/>
-                    <span th:text="${review.rating}"></span><span>/5</span>
+                    <span><strong>Reviewed By</strong></span>
+                    <br/>
+                    <span>Name: </span>
+                    <span th:text="${review.reviewername}"></span>
+                    <br/>
+                    <span>Age: </span>
+                    <span th:text="${review.reviewerAge}"></span>
+                    <br/>
+                    <span>Occupation: </span>
+                    <span th:text="${review.reviewerOccupation}"></span>
+                    <br/>
+                    <span>Gender: </span>
+                    <span th:text="${review.reviewerGender}"></span>
+
                 </div>
             </div>
         </div>

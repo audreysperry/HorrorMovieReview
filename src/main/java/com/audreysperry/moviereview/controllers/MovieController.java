@@ -74,6 +74,7 @@ public class MovieController {
         Movie movie = movieRepo.findOne(movieid);
         List reviews = movie.getReviews();
         System.out.println(reviews);
+        model.addAttribute("movie", movie);
         model.addAttribute("reviews", reviews);
         return "viewReviews";
     }

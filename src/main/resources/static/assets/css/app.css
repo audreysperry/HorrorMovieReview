@@ -10,3 +10,17 @@
 .movies {
     margin: 20px;
 }
+
+
+.nav-style {
+    padding: 0px 75px !important;
+    background-color: #eee;
+}
+
+.card-det {
+    padding: 20px !important;
+}
+
+.card-text-style {
+    font-style: italic;
+}
