@@ -1,13 +1,16 @@
 .movie-image {
-    max-width: 250px;
+    max-width: 200px;
 
 }
 
 .wrapper {
     padding: 20px 100px;
-    background-image: url("../img/horror.jpg") !important;
+    background-image: url("../img/horror.jpg")!important;
+    background-attachment: fixed;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    height: 1000px;
 
 }
 
@@ -40,10 +43,39 @@
 
 .nav-link {
     color: #fff !important;
+    align-self: center;
 }
 
 .page-title {
     font-family: Herculanum;
     text-align: center;
     color: chartreuse;
+    font-size: 30px;
+}
+
+.form-format {
+    max-width: 400px;
+    color: #ffffff;
+    margin: 0 auto;
+}
+
+.logout-link {
+    color: #ffffff;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.logout-form {
+    margin: 0px;
+    padding: 8px;
+}
+
+.location {
+    font-style: italic;
+}
+
+.movie-link {
+    color: black;
 }

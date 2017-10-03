@@ -2,8 +2,10 @@ package com.audreysperry.moviereview.controllers;
 
 import com.audreysperry.moviereview.models.Movie;
 import com.audreysperry.moviereview.models.Review;
+import com.audreysperry.moviereview.models.User;
 import com.audreysperry.moviereview.repositories.MoviesRepository;
 import com.audreysperry.moviereview.repositories.ReviewsRepository;
+import com.audreysperry.moviereview.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -22,6 +25,9 @@ public class MovieController {
 
     @Autowired
     private ReviewsRepository reviewRepo;
+
+    @Autowired
+    private UserRepository userRepo;
 
     @RequestMapping("/")
     public String displayMovies(Model model) {
@@ -73,7 +79,6 @@ public class MovieController {
                                 Model model) {
         Movie movie = movieRepo.findOne(movieid);
         List reviews = movie.getReviews();
-        System.out.println(reviews);
         model.addAttribute("movie", movie);
         model.addAttribute("reviews", reviews);
         return "viewReviews";
@@ -90,10 +95,13 @@ public class MovieController {
     @RequestMapping(value="/movie/{movieid}/review", method = RequestMethod.POST)
     public String submitReview(@PathVariable ("movieid") Long movieid,
                                Model model,
-                               @ModelAttribute Review review) {
+                               @ModelAttribute Review review,
+                               Principal principal) {
         Movie movie = movieRepo.findOne(movieid);
+        User user = userRepo.findByUsername(principal.getName());
         Review newReview = review;
         newReview.setMovie(movie);
+        newReview.setUser(user);
         reviewRepo.save(newReview);
 
         return "redirect:/";

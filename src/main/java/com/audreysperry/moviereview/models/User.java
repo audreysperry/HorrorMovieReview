@@ -19,6 +19,8 @@ public class User implements UserDetails {
 
     private String username;
     private String password;
+    private String firstname;
+    private String location;
 
     @ManyToOne
     @JoinColumn(name="role_id")
@@ -85,5 +87,21 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

@@ -7,44 +7,32 @@
     <link rel="stylesheet" href="/assets/css/app.css"/>
 </head>
 <body>
-<nav class="nav justify-content-end nav-style">
-    <a class="nav-link active" href="/">Home</a>
+<nav class="nav nav-style">
+    <a class="navbar-brand justify-content-start page-title" href="/">Panic</a>
     <a class="nav-link" href="/movie/add">Add Movie</a>
-
+    <a class="nav-link" href="/signup">Signup</a>
+    <form action="/logout" method="post" class="nav-link logout-form">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <input type="submit" class="logout-link" value="Logout" />
+    </form>
 </nav>
-    <div class="container">
-        <div class="movie-review-name">
+    <div class="wrapper">
+        <div class="movie-review-name page-title">
             <span>Review </span>
             <span th:text="${movie.title}"></span>
         </div>
         <br/>
         <div class="row">
-            <form class="col-md-6" th:action="@{'/movie/' + ${movie.id} + '/review'}" method="post" th:object="${review}">
+            <form class="col-md-6 form-format" th:action="@{'/movie/' + ${movie.id} + '/review'}" method="post" th:object="${review}">
                 <div class="form-group">
-                    <label>Your Name (optional)</label>
-                    <input class="form-control" type="text" th:field="*{reviewername}" placeholder="Name" />
-                </div>
-                <div class="form-group">
-                    <label>Your Age (optional)</label>
-                    <input class="form-control" type="text" th:field="*{reviewerAge}" />
-                </div>
-                <div class="form-group">
-                    <label>Your Gender (optional)</label>
-                    <input class="form-control" type="text" th:field="*{reviewerGender}" placeholder="Gender (optional)" />
-                </div>
-                <div class="form-group">
-                    <label>Your Occupation (optional)</label>
-                    <input class="form-control" type="text" th:field="*{reviewerOccupation}" placeholder="Occupation (optional)" />
-                </div>
-                <div class="form-group">
-                    <label>Rate the movie on a scale of 1 to 5</label>
+                    <label>Rating (1-5)</label>
                     <input class="form-control" type="text" th:field="*{rating}" />
                 </div>
                 <div class="form-group">
                     <label>Write a brief review of the movie</label>
-                    <input class="form-control" type="text" th:field="*{reviewtyped}" placeholder="Write a review" />
+                    <textarea class="form-control" type="text" th:field="*{reviewtyped}">Write a review</textarea>
                 </div>
-                <button type="submit" class="btn btn-primary btn-sm">Submit Review</button>
+                <button type="submit" class="btn btn-outline-secondary btn-sm">Submit Review</button>
             </form>
 
         </div>

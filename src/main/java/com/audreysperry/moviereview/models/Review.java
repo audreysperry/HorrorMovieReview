@@ -11,24 +11,17 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name="reviewer_name")
-    private String reviewername;
     private int rating;
 
     private String reviewtyped;
 
-    @Column(name="reviewer_age")
-    private int reviewerAge;
-
-    @Column(name="reviewer_gender")
-    private String reviewerGender;
-
-    @Column(name="reviewer_occupation")
-    private String reviewerOccupation;
-
     @ManyToOne
     @JoinColumn(name="movie_id")
     private Movie movie;
+
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
 
     public String getReviewtyped() {
         return reviewtyped;
@@ -46,13 +39,6 @@ public class Review {
         this.id = id;
     }
 
-    public String getReviewername() {
-        return reviewername;
-    }
-
-    public void setReviewername(String reviewername) {
-        this.reviewername = reviewername;
-    }
 
     public int getRating() {
         return rating;
@@ -62,35 +48,19 @@ public class Review {
         this.rating = rating;
     }
 
-    public int getReviewerAge() {
-        return reviewerAge;
-    }
-
-    public void setReviewerAge(int reviewerAge) {
-        this.reviewerAge = reviewerAge;
-    }
-
-    public String getReviewerGender() {
-        return reviewerGender;
-    }
-
-    public void setReviewerGender(String reviewerGender) {
-        this.reviewerGender = reviewerGender;
-    }
-
-    public String getReviewerOccupation() {
-        return reviewerOccupation;
-    }
-
-    public void setReviewerOccupation(String reviewerOccupation) {
-        this.reviewerOccupation = reviewerOccupation;
-    }
-
     public Movie getMovie() {
         return movie;
     }
 
     public void setMovie(Movie movie) {
         this.movie = movie;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -7,17 +7,22 @@
     <link rel="stylesheet" href="/assets/css/app.css"/>
 </head>
 <body>
-<nav class="nav justify-content-end nav-style">
-    <a class="nav-link active" href="/">Home</a>
+<nav class="nav nav-style">
+    <a class="navbar-brand justify-content-start page-title" href="/">Panic</a>
     <a class="nav-link" href="/movie/add">Add Movie</a>
-
+    <a class="nav-link" href="/signup">Signup</a>
+    <form action="/logout" method="post" class="nav-link logout-form">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <input type="submit" class="logout-link" value="Logout" />
+    </form>
 </nav>
 
-<div class="text-center h3">
-    <span>Reviews for </span>
-    <span th:text="${movie.title}"></span>
-</div>
-<div class="container">
+<div class="wrapper">
+
+    <div class="text-center page-title">
+        <span>Reviews for </span>
+        <span th:text="${movie.title}"></span>
+    </div>
     <div class="row">
         <div class="col-md-4" th:each="review : ${reviews}">
             <div class="card">
@@ -29,20 +34,10 @@
                     <span class="card-text card-text-style" th:text="${review.reviewtyped}"></span>
                     <span>"</span>
                     <br/>
-                    <span><strong>Reviewed By</strong></span>
+                    <span><strong>-- </strong></span>
+                    <span th:text="${review.user.firstname}"></span>
                     <br/>
-                    <span>Name: </span>
-                    <span th:text="${review.reviewername}"></span>
-                    <br/>
-                    <span>Age: </span>
-                    <span th:text="${review.reviewerAge}"></span>
-                    <br/>
-                    <span>Occupation: </span>
-                    <span th:text="${review.reviewerOccupation}"></span>
-                    <br/>
-                    <span>Gender: </span>
-                    <span th:text="${review.reviewerGender}"></span>
-
+                    <span class="location" th:text="${review.user.location}"></span>
                 </div>
             </div>
         </div>

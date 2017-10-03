@@ -8,35 +8,44 @@
 
 </head>
 <body>
-<nav class="nav justify-content-end nav-style">
-    <a class="nav-link active" href="/">Home</a>
+<nav class="nav nav-style">
+    <a class="navbar-brand justify-content-start page-title" href="/">Panic</a>
     <a class="nav-link" href="/movie/add">Add Movie</a>
-
+    <a class="nav-link" href="/signup">Signup</a>
+    <form action="/logout" method="post" class="nav-link logout-form">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <input type="submit" class="logout-link" value="Logout" />
+    </form>
 </nav>
 <div class="wrapper">
-    <h3>Add Movie</h3>
-    <form class="col-md-6" action="/movie/add" method="post" th:object="${movie}">
+    <h3 class="page-title">Add Movie</h3>
+    <form class="col-md-6 form-format" action="/movie/add" method="post" th:object="${movie}">
         <div class="form-group">
-            <input class="form-control" type="text" th:field="*{title}" placeholder="Movie Title"/>
+            <label for="title">Movie Title</label>
+            <input class="form-control" type="text" th:field="*{title}" />
 
         </div>
         <div class="form-group">
-            <input class="form-control" type="text" th:field="*{genre}" placeholder="Scary Level" />
+            <label for="genre">Type of Horror (i.e. Suspense)</label>
+            <input class="form-control" type="text" th:field="*{genre}" />
 
         </div>
         <div class="form-group">
-            <input class="form-control" type="text" th:field="*{releasedate}" placeholder="Release Date" />
+            <label for="releasedate">Movie Release Date</label>
+            <input class="form-control" type="text" th:field="*{releasedate}" />
 
         </div>
         <div class="form-group">
-            <input class="form-control" type="text" th:field="*{imdblink}" placeholder="IMDB Url" />
+            <label for="imdblink">Link to movie on IMDB</label>
+            <input class="form-control" type="text" th:field="*{imdblink}"/>
 
         </div>
         <div class="form-group">
-            <input class="form-control" type="text" th:field="*{imagelink}" placeholder="Movie Image Url" />
+            <label for="imagelink">Link to Movie Image</label>
+            <input class="form-control" type="text" th:field="*{imagelink}" />
 
         </div>
-            <input class="btn btn-primary btn-sm" type="submit" value="Add Movie" />
+            <input class="btn btn-outline-secondary btn-sm" type="submit" value="Add Movie" />
 
     </form>
 
