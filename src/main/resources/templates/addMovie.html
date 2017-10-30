@@ -20,6 +20,7 @@
 <div class="wrapper">
     <h3 class="page-title">Add Movie</h3>
     <form class="col-md-6 form-format" action="/movie/add" method="post" th:object="${movie}">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
         <div class="form-group">
             <label for="title">Movie Title</label>
             <input class="form-control" type="text" th:field="*{title}" />

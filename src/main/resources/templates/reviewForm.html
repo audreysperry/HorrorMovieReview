@@ -24,6 +24,7 @@
         <br/>
         <div class="row">
             <form class="col-md-6 form-format" th:action="@{'/movie/' + ${movie.id} + '/review'}" method="post" th:object="${review}">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                 <div class="form-group">
                     <label>Rating (1-5)</label>
                     <input class="form-control" type="text" th:field="*{rating}" />
